@@ -26,14 +26,14 @@
     </div>
     <?php
         function enviar() {
-            let numero = document.getElementById("num").value;
-            if (numero > 0) {
+            $numero = document.getElementById("num").value;
+            if ($numero > 0) {
                 echo("Você digitou um valor positivo")
             }
-            else if (numero < 0) {
+            else if ($numero < 0) {
                 echo("Você digitou um valor negativo")
             }
-            else if (numero == 0) {
+            else if ($numero == 0) {
                 echo("Você digitou um valor nulo")
             }
         }
