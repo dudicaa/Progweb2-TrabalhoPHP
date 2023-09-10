@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Exercício 1</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="bitnami.css">
 </head>
 
 <body>
     <div class="links">
-        <a href="Exercicio1.html">Exercício 1</a>
-        <a href="Exercicio2.html">Exercício 2</a>
+        <a href="ex1.php">Exercício 1</a>
+        <a href="ex2.php">Exercício 2</a>
         <a href="Exercicio3.html">Exercício 3</a>
         <a href="Exercicio4.html">Exercício 4</a>
         <a href="Exercicio5.html">Exercício 5</a>
@@ -18,26 +18,27 @@
     <div class="form">
         <h2>Escolha um número</h2>
 
-        <form>
+        <form method="POST">
             <label>Número:</label>
-            <input type="text" id="num">
-            <button onclick="enviar()">Enviar</button>
+            <input type="number" id="num" name="numero" required>
+            <input type="submit" value="Enviar">
         </form>
     </div>
     <?php
-        function enviar() {
-            $numero = document.getElementById("num").value;
-            if ($numero > 0) {
-                echo("Você digitou um valor positivo")
-            }
-            else if ($numero < 0) {
-                echo("Você digitou um valor negativo")
-            }
-            else if ($numero == 0) {
-                echo("Você digitou um valor nulo")
-            }
-        }
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $numero = $_POST["numero"];
 
+        if($numero>0){
+            echo "Número positivo";
+        }
+        elseif($numero<0){
+            echo "Número negativo";
+        }
+        else{
+            echo "Número igual a 0";
+        }
+    }
     ?>
+   
 </body>
 </html>
