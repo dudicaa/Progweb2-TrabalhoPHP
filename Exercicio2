@@ -3,39 +3,37 @@
     <head>
         <meta charset="UTF-8" >
         <title>Exercício 2</title>
-        <link rel="stylesheet" href="css/estilo.css">
+        <link rel="stylesheet" href="bitnami.css">
     </head>
     <body>
         <div class="links">
-            <a href="Exercicio1.html">Exercício 1</a>
-            <a href="Exercicio2.html">Exercício 2</a>
-            <a href="Exercicio3.html">Exercício 3</a>
-            <a href="Exercicio4.html">Exercício 4</a>
-            <a href="Exercicio5.html">Exercício 5</a>
-            <a href="Exercicio6.html">Exercício 6</a>
+            <a href="exercicio1.html">Exercício 1</a>
+            <a href="exercicio2.html">Exercício 2</a>
         </div>
         <div class="form">
-            <h2>Tabuada do número:</h2>
         <form>
-           <input type="text" id="tab">
-           <button onclick="enviar()">Enviar</button><br>
-           <h3>Resultado</h3>
-           <div id="resultado"></div>
+           <label>Tabuada do número:</label>
+           <input type="number" id="tab" name="tab">
+           <input type="submit" value="Enviar"><br>
+           <label>Resultado:</label>
+           <div name="res"></div>
         </form>
         </div>
-        
-        <?php
-            function enviar(){
-            $num = parseInt(document.getElementById("tab").value);
-            $resposta = (document.getElementById("resultado").value);
-            $tabuada='';
 
-         for($count=1; $count<=10 ; $count++)
-         
-         $resultado+= $num*$count +"<br>";
-         $tabuada += $num+" x "+$count+" = "+$resultado;
-         $resposta.innerHTML = $tabuada;
-     }
-        ?>
-    </body>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $num = $_POST["tab"];
+        $tabuada='';
+        $resposta= $_POST["res"];
+       
+
+        for ($count = 1; $count <= 10; $count++)
+
+        $tabuada += $num+" x "+$count+" = ";
+        $num*$count +"<br>";
+        $resposta.$_POST["res"] = $tabuada;
+    }
+    ?>
+</body>
+
 </html>
