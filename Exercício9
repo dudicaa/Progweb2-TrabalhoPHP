@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Combustível</title>
+</head>
+<body>
+    <h1>Calculadora de Combustível</h1>
+    
+    <?php
+    // Verifique se o formulário foi enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Receba o número de litros vendidos e o tipo de combustível do formulário
+        $litrosVendidos = $_POST["litrosVendidos"];
+        $tipoCombustivel = $_POST["tipoCombustivel"];
+        
+        // Defina os preços por litro da gasolina e do álcool
+        $precoGasolina = 3.30;
+        $precoAlcool = 2.90;
+        
+        // Defina os limites de litros para aplicar os descontos
+        $limiteDescontoAlcool = 20;
+        $limiteDescontoGasolina = 20;
+        
+        // Inicialize o desconto
+        $desconto = 0;
+        
+        // Calcule o valor total antes do desconto
+        if ($tipoCombustivel == "Alcool") {
+            $valorTotal = $litrosVendidos * $precoAlcool;
+            
+            // Aplique os descontos com base na quantidade de litros
+            if ($litrosVendidos <= $limiteDescontoAlcool) {
+                $desconto = $litrosVendidos * 0.03; // 3% de desconto por litro
+            } else {
+                $desconto = $limiteDescontoAlcool * 0.03 + ($litrosVendidos - $limiteDescontoAlcool) * 0.05; // 3% até 20 litros, 5% acima de 20 litros
+            }
+        } elseif ($tipoCombustivel == "Gasolina") {
+            $valorTotal = $litrosVendidos * $precoGasolina;
+            
+            // Aplique os descontos com base na quantidade de litros
+            if ($litrosVendidos <= $limiteDescontoGasolina) {
+                $desconto = $litrosVendidos * 0.04; // 4% de desconto por litro
+            } else {
+                $desconto = $limiteDescontoGasolina * 0.04 + ($litrosVendidos - $limiteDescontoGasolina) * 0.06; // 4% até 20 litros, 6% acima de 20 litros
+            }
+        }
+        
+        // Calcule o valor a ser pago pelo cliente
+        $valorAPagar = $valorTotal - $desconto;
+        
+        // Exiba o resultado
+        echo "Número de Litros Vendidos: " . $litrosVendidos . " litros<br>";
+        echo "Tipo de Combustível: " . $tipoCombustivel . "<br>";
+        echo "Valor a Pagar: R$ " . number_format($valorAPagar, 2, ',', '.');
+    }
+    ?>
+
+    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+        <label for="litrosVendidos">Número de Litros Vendidos:</label>
+        <input type="number" step="0.01" name="litrosVendidos" required><br>
+        <label for="tipoCombustivel">Tipo de Combustível:</label>
+        <select name="tipoCombustivel" required>
+            <option value="Alcool">Álcool</option>
+            <option value="Gasolina">Gasolina</option>
+        </select><br>
+        <input type="submit" value="Calcular Valor a Pagar">
+    </form>
+</body>
+</html>
