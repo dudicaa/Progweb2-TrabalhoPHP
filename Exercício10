@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificador de Aposentadoria</title>
+</head>
+<body>
+    <h1>Verificador de Aposentadoria</h1>
+    
+    <?php
+    // Verifique se o formulário foi enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Receba o ano de nascimento e o ano de ingresso na empresa do formulário
+        $anoNascimento = $_POST["anoNascimento"];
+        $anoIngressoEmpresa = $_POST["anoIngressoEmpresa"];
+        
+        // Calcule a idade do funcionário
+        $idade = date("Y") - $anoNascimento;
+        
+        // Calcule o tempo de trabalho na empresa
+        $tempoTrabalho = date("Y") - $anoIngressoEmpresa;
+        
+        // Verifique se o funcionário requer aposentadoria com base nos requisitos
+        if ($idade >= 65 || $tempoTrabalho >= 30 || ($idade >= 60 && $tempoTrabalho >= 25)) {
+            $mensagem = "REQUERER APOSENTADORIA";
+        } else {
+            $mensagem = "NÃO REQUERER APOSENTADORIA";
+        }
+        
+        // Exiba o resultado
+        echo "Idade do Funcionário: " . $idade . " anos<br>";
+        echo "Tempo de Trabalho na Empresa: " . $tempoTrabalho . " anos<br>";
+        echo "Mensagem: " . $mensagem;
+    }
+    ?>
+
+    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+        <label for="anoNascimento">Ano de Nascimento:</label>
+        <input type="number" name="anoNascimento" required><br>
+        <label for="anoIngressoEmpresa">Ano de Ingresso na Empresa:</label>
+        <input type="number" name="anoIngressoEmpresa" required><br>
+        <input type="submit" value="Verificar Aposentadoria">
+    </form>
+</body>
+</html>
