@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Reajuste Salarial</title>
+</head>
+<body>
+    <h1>Calculadora de Reajuste Salarial</h1>
+    
+    <?php
+    // Verifique se o formulário foi enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Receba o salário mensal atual e o percentual de reajuste do formulário
+        $salarioAtual = $_POST["salarioAtual"];
+        $percentualReajuste = $_POST["percentualReajuste"];
+
+        // Calcule o novo salário com base no reajuste
+        $novoSalario = $salarioAtual + ($salarioAtual * ($percentualReajuste / 100));
+
+        // Exiba o resultado
+        echo "Salário Mensal Atual: R$ " . number_format($salarioAtual, 2, ',', '.') . "<br>";
+        echo "Percentual de Reajuste: " . $percentualReajuste . "%<br>";
+        echo "Novo Salário: R$ " . number_format($novoSalario, 2, ',', '.');
+    }
+    ?>
+
+    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+        <label for="salarioAtual">Salário Mensal Atual (R$):</label>
+        <input type="number" step="0.01" name="salarioAtual" required><br>
+        <label for="percentualReajuste">Percentual de Reajuste (%):</label>
+        <input type="number" step="0.01" name="percentualReajuste" required><br>
+        <input type="submit" value="Calcular Novo Salário">
+    </form>
+</body>
+</html>
