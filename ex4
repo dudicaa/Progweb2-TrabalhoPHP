@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Custo de Carro</title>
+</head>
+<body>
+    <h1>Calculadora de Custo de Carro</h1>
+    
+    <?php
+    // Verifique se o formulário foi enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Receba o custo de fábrica do formulário
+        $custoFabrica = $_POST["custoFabrica"];
+        
+        // Defina a porcentagem do distribuidor e dos impostos
+        $percentualDistribuidor = 0.28; // 28%
+        $percentualImpostos = 0.45; // 45%
+        
+        // Calcule o custo final ao consumidor
+        $custoConsumidor = $custoFabrica + ($custoFabrica * $percentualDistribuidor) + ($custoFabrica * $percentualImpostos);
+        
+        // Exiba o resultado
+        echo "O custo final ao consumidor é de: R$ " . number_format($custoConsumidor, 2, ',', '.');
+    }
+    ?>
+    
+    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+        <label for="custoFabrica">Custo de Fábrica do Carro:</label>
+        <input type="number" step="0.01" name="custoFabrica" required>
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>
