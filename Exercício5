@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Calculadora de Reajuste Salarial</title>
+<meta charset="UTF-8" >
+        <title>Exercício 5</title>
+        <link rel="stylesheet" href="bitnami.css">
 </head>
 <body>
-    <h1>Calculadora de Reajuste Salarial</h1>
+<div class="links">
+        <a href="ex1.php">Exercício 1</a>
+        <a href="ex2.php">Exercício 2</a>
+        <a href="ex3.php">Exercício 3</a>
+        <a href="ex4.php">Exercício 4</a>
+        <a href="ex5.php">Exercício 5</a>
+        <a href="ex6.php">Exercício 6</a>
+        <a href="ex7.php">Exercício 7</a>
+        <a href="ex8.php">Exercício 8</a>
+        <a href="ex9.php">Exercício 9</a>
+        <a href="ex10.php">Exercício 10</a>
+        <a href="ex11.php">Exercício 11</a>
+    </div>
     
-    <?php
-    // Verifique se o formulário foi enviado
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receba o salário mensal atual e o percentual de reajuste do formulário
-        $salarioAtual = $_POST["salarioAtual"];
-        $percentualReajuste = $_POST["percentualReajuste"];
-
-        // Calcule o novo salário com base no reajuste
-        $novoSalario = $salarioAtual + ($salarioAtual * ($percentualReajuste / 100));
-
-        // Exiba o resultado
-        echo "Salário Mensal Atual: R$ " . number_format($salarioAtual, 2, ',', '.') . "<br>";
-        echo "Percentual de Reajuste: " . $percentualReajuste . "%<br>";
-        echo "Novo Salário: R$ " . number_format($novoSalario, 2, ',', '.');
-    }
-    ?>
-
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+    <div class="form">
+    <h2>Calculadora de Reajuste Salarial</h2>
+    <form method="post">
         <label for="salarioAtual">Salário Mensal Atual (R$):</label>
         <input type="number" step="0.01" name="salarioAtual" required><br>
         <label for="percentualReajuste">Percentual de Reajuste (%):</label>
         <input type="number" step="0.01" name="percentualReajuste" required><br>
         <input type="submit" value="Calcular Novo Salário">
     </form>
+</div>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $salarioAtual = $_POST["salarioAtual"];
+        $percentualReajuste = $_POST["percentualReajuste"];
+        $novoSalario = $salarioAtual + ($salarioAtual * ($percentualReajuste / 100));
+
+        echo "Salário Mensal Atual: R$ " . number_format($salarioAtual, 2, ',', '.') . "<br>";
+        echo "Percentual de Reajuste: " . $percentualReajuste . "%<br>";
+        echo "Novo Salário: R$ " . number_format($novoSalario, 2, ',', '.');
+    }
+    ?>
 </body>
 </html>
