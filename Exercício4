@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Calculadora de Custo de Carro</title>
+<meta charset="UTF-8" >
+        <title>Exercício 4</title>
+        <link rel="stylesheet" href="bitnami.css">
 </head>
 <body>
-    <h1>Calculadora de Custo de Carro</h1>
+<div class="links">
+        <a href="ex1.php">Exercício 1</a>
+        <a href="ex2.php">Exercício 2</a>
+        <a href="ex3.php">Exercício 3</a>
+        <a href="ex4.php">Exercício 4</a>
+        <a href="ex5.php">Exercício 5</a>
+        <a href="ex6.php">Exercício 6</a>
+        <a href="ex7.php">Exercício 7</a>
+        <a href="ex8.php">Exercício 8</a>
+        <a href="ex9.php">Exercício 9</a>
+        <a href="ex10.php">Exercício 10</a>
+        <a href="ex11.php">Exercício 11</a>
+    </div>
     
-    <?php
-    // Verifique se o formulário foi enviado
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receba o custo de fábrica do formulário
-        $custoFabrica = $_POST["custoFabrica"];
-        
-        // Defina a porcentagem do distribuidor e dos impostos
-        $percentualDistribuidor = 0.28; // 28%
-        $percentualImpostos = 0.45; // 45%
-        
-        // Calcule o custo final ao consumidor
-        $custoConsumidor = $custoFabrica + ($custoFabrica * $percentualDistribuidor) + ($custoFabrica * $percentualImpostos);
-        
-        // Exiba o resultado
-        echo "O custo final ao consumidor é de: R$ " . number_format($custoConsumidor, 2, ',', '.');
-    }
-    ?>
-    
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+    <div class="form">
+    <h2>Calculadora de Custo de Carro</h2>
+    <form method="post">
         <label for="custoFabrica">Custo de Fábrica do Carro:</label>
         <input type="number" step="0.01" name="custoFabrica" required>
         <input type="submit" value="Calcular">
     </form>
+</div>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $custoFabrica = $_POST["custoFabrica"];
+        $percentualDistribuidor = 0.28;
+        $percentualImpostos = 0.45;
+        $custoConsumidor = $custoFabrica + ($custoFabrica * $percentualDistribuidor) + ($custoFabrica * $percentualImpostos);
+        echo "O custo final ao consumidor é de: R$ " . number_format($custoConsumidor, 2, ',', '.');
+    }
+    ?>
 </body>
 </html>
