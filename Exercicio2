@@ -26,8 +26,6 @@
            <input type="number" id="tab" name="tab">
            <input type="submit" value="Enviar"><br>
         </form>
-        </div>
-    <div class="php">
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $num = $_POST["tab"];
@@ -43,5 +41,4 @@
     ?>
     </div>
 </body>
-
 </html>
