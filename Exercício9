@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" >
-        <title>Exercício 8</title>
+        <title>Exercício 9</title>
         <link rel="stylesheet" href="bitnami.css">
 </head>
 <body>
@@ -62,5 +62,6 @@
         echo "Valor a Pagar: R$ " . number_format($valorAPagar, 2, ',', '.');
     }
     ?>
+    </div>
 </body>
 </html>
