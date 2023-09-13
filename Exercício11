@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" >
-        <title>Exercício 8</title>
+        <title>Exercício 11</title>
         <link rel="stylesheet" href="bitnami.css">
 </head>
 <body>
@@ -44,5 +44,6 @@
         echo "<p>Idade: " . $idade . " anos</p>";
     }
     ?>
+    </div>
 </body>
 </html>
