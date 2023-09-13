@@ -11,14 +11,20 @@
     <div class="links">
         <a href="ex1.php">Exercício 1</a>
         <a href="ex2.php">Exercício 2</a>
-        <a href="Exercicio3.html">Exercício 3</a>
-        <a href="Exercicio4.html">Exercício 4</a>
-        <a href="Exercicio5.html">Exercício 5</a>
+        <a href="ex3.php">Exercício 3</a>
+        <a href="ex4.php">Exercício 4</a>
+        <a href="ex5.php">Exercício 5</a>
+        <a href="ex6.php">Exercício 6</a>
+        <a href="ex7.php">Exercício 7</a>
+        <a href="ex8.php">Exercício 8</a>
+        <a href="ex9.php">Exercício 9</a>
+        <a href="ex10.php">Exercício 10</a>
+        <a href="ex11.php">Exercício 11</a>
     </div>
     <div class="form">
         <h2>Escolha um número</h2>
 
-        <form method="POST">
+        <form method="post">
             <label>Número:</label>
             <input type="number" id="num" name="numero" required>
             <input type="submit" value="Enviar">
