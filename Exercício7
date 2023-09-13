@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Calculadora de Salário</title>
+<meta charset="UTF-8" >
+        <title>Exercício 7</title>
+        <link rel="stylesheet" href="bitnami.css">
 </head>
 <body>
-    <h1>Calculadora de Salário</h1>
+<div class="links">
+        <a href="ex1.php">Exercício 1</a>
+        <a href="ex2.php">Exercício 2</a>
+        <a href="ex3.php">Exercício 3</a>
+        <a href="ex4.php">Exercício 4</a>
+        <a href="ex5.php">Exercício 5</a>
+        <a href="ex6.php">Exercício 6</a>
+        <a href="ex7.php">Exercício 7</a>
+        <a href="ex8.php">Exercício 8</a>
+        <a href="ex9.php">Exercício 9</a>
+        <a href="ex10.php">Exercício 10</a>
+        <a href="ex11.php">Exercício 11</a>
+    </div>
+   
+    <div class="form">
+    <h2>Calculadora de Salário</h2>
+    <form method="post">
+        <label for="horasTrabalhadas">Horas Trabalhadas no Mês:</label>
+        <input type="number" step="0.01" name="horasTrabalhadas" required><br>
+        <label for="salarioPorHora">Salário por Hora (R$):</label>
+        <input type="number" step="0.01" name="salarioPorHora" required><br>
+        <input type="submit" value="Calcular Salário">
+    </form>
     
     <?php
-    // Verifique se o formulário foi enviado
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receba o número de horas trabalhadas e o salário por hora do formulário
         $horasTrabalhadas = $_POST["horasTrabalhadas"];
         $salarioPorHora = $_POST["salarioPorHora"];
-        
-        // Defina o valor da jornada de trabalho semanal (40 horas) e o número de semanas em um mês
         $jornadaSemanal = 40;
         $semanasPorMes = 4;
-        
-        // Calcule o salário base
+
+        //salário base
         $salarioBase = $horasTrabalhadas * $salarioPorHora;
         
-        // Calcule as horas extras (se houver)
+        //horas extras (se houver)
         if ($horasTrabalhadas > $jornadaSemanal * $semanasPorMes) {
             $horasExtras = $horasTrabalhadas - ($jornadaSemanal * $semanasPorMes);
             $salarioHorasExtras = $horasExtras * ($salarioPorHora * 1.5);
@@ -28,11 +48,9 @@
             $horasExtras = 0;
             $salarioHorasExtras = 0;
         }
-        
-        // Calcule o salário total
+        //salário total
         $salarioTotal = $salarioBase + $salarioHorasExtras;
         
-        // Exiba o resultado
         echo "Horas Trabalhadas no Mês: " . $horasTrabalhadas . " horas<br>";
         echo "Salário por Hora: R$ " . number_format($salarioPorHora, 2, ',', '.') . "<br>";
         echo "Salário Base: R$ " . number_format($salarioBase, 2, ',', '.') . "<br>";
@@ -41,13 +59,5 @@
         echo "Salário Total: R$ " . number_format($salarioTotal, 2, ',', '.');
     }
     ?>
-
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        <label for="horasTrabalhadas">Horas Trabalhadas no Mês:</label>
-        <input type="number" step="0.01" name="horasTrabalhadas" required><br>
-        <label for="salarioPorHora">Salário por Hora (R$):</label>
-        <input type="number" step="0.01" name="salarioPorHora" required><br>
-        <input type="submit" value="Calcular Salário">
-    </form>
 </body>
 </html>
