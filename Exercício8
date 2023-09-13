@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Calculadora de Salário de Vendedor</title>
-</head>
-<body>
-    <h1>Calculadora de Salário de Vendedor</h1>
-    
-    <?php
-    // Verifique se o formulário foi enviado
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receba o salário fixo<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" >
@@ -57,38 +46,6 @@
         echo "Salário Atual: R$ " . number_format($salarioAtual, 2, ',', '.');
     }
     ?>
-</body>
-</html> e o valor das vendas do formulário
-        $salarioFixo = $_POST["salarioFixo"];
-        $valorVendas = $_POST["valorVendas"];
-        
-        // Defina o limite para a comissão de 3%
-        $limiteComissao3 = 1500;
-        
-        // Calcule a comissão
-        if ($valorVendas <= $limiteComissao3) {
-            $comissao = $valorVendas * 0.03; // 3% sobre o total das vendas
-        } else {
-            $comissao = $limiteComissao3 * 0.03 + ($valorVendas - $limiteComissao3) * 0.05; // 3% sobre os primeiros R$ 1500 e 5% sobre o excedente
-        }
-        
-        // Calcule o salário atual
-        $salarioAtual = $salarioFixo + $comissao;
-        
-        // Exiba o resultado
-        echo "Salário Fixo: R$ " . number_format($salarioFixo, 2, ',', '.') . "<br>";
-        echo "Valor das Vendas: R$ " . number_format($valorVendas, 2, ',', '.') . "<br>";
-        echo "Comissão: R$ " . number_format($comissao, 2, ',', '.') . "<br>";
-        echo "Salário Atual: R$ " . number_format($salarioAtual, 2, ',', '.');
-    }
-    ?>
-
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        <label for="salarioFixo">Salário Fixo (R$):</label>
-        <input type="number" step="0.01" name="salarioFixo" required><br>
-        <label for="valorVendas">Valor das Vendas (R$):</label>
-        <input type="number" step="0.01" name="valorVendas" required><br>
-        <input type="submit" value="Calcular Salário">
-    </form>
+    </div>
 </body>
 </html>
