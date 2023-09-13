@@ -29,7 +29,7 @@
         <input type="number" step="0.01" name="percentualReajuste" required><br>
         <input type="submit" value="Calcular Novo Salário">
     </form>
-</div>
+
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $salarioAtual = $_POST["salarioAtual"];
@@ -41,5 +41,6 @@
         echo "Novo Salário: R$ " . number_format($novoSalario, 2, ',', '.');
     }
     ?>
+    </div>
 </body>
 </html>
