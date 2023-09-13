@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Verificador de Aprovação</title>
+<meta charset="UTF-8" >
+        <title>Exercício 6</title>
+        <link rel="stylesheet" href="bitnami.css">
 </head>
 <body>
-    <h1>Verificador de Aprovação</h1>
-    
+<div class="links">
+        <a href="ex1.php">Exercício 1</a>
+        <a href="ex2.php">Exercício 2</a>
+        <a href="ex3.php">Exercício 3</a>
+        <a href="ex4.php">Exercício 4</a>
+        <a href="ex5.php">Exercício 5</a>
+        <a href="ex6.php">Exercício 6</a>
+        <a href="ex7.php">Exercício 7</a>
+        <a href="ex8.php">Exercício 8</a>
+        <a href="ex9.php">Exercício 9</a>
+        <a href="ex10.php">Exercício 10</a>
+        <a href="ex11.php">Exercício 11</a>
+    </div>
+   
+    <div class="form">
+    <h2>Verificador de Aprovação</h2>
+    <form method="post">
+        <label for="nota1">Nota 1:</label>
+        <input type="number" step="0.01" name="nota1" required><br>
+        <label for="nota2">Nota 2:</label>
+        <input type="number" step="0.01" name="nota2" required><br>
+        <label for="nota3">Nota 3:</label>
+        <input type="number" step="0.01" name="nota3" required><br>
+        <input type="submit" value="Verificar Aprovação">
+    </form>
+</div>
     <?php
-    // Verifique se o formulário foi enviado
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receba as três notas do formulário
         $nota1 = $_POST["nota1"];
         $nota2 = $_POST["nota2"];
         $nota3 = $_POST["nota3"];
 
-        // Calcule a média aritmética simples
         $media = ($nota1 + $nota2 + $nota3) / 3;
 
-        // Verifique se o aluno foi aprovado
         $aprovado = ($media >= 6);
 
-        // Exiba o resultado
         echo "Nota 1: " . $nota1 . "<br>";
         echo "Nota 2: " . $nota2 . "<br>";
         echo "Nota 3: " . $nota3 . "<br>";
@@ -33,15 +54,5 @@
         }
     }
     ?>
-
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        <label for="nota1">Nota 1:</label>
-        <input type="number" step="0.01" name="nota1" required><br>
-        <label for="nota2">Nota 2:</label>
-        <input type="number" step="0.01" name="nota2" required><br>
-        <label for="nota3">Nota 3:</label>
-        <input type="number" step="0.01" name="nota3" required><br>
-        <input type="submit" value="Verificar Aprovação">
-    </form>
 </body>
 </html>
